@@ -112,12 +112,23 @@ function setLargeImageSrc(url) {
 }
   refs.gallery.addEventListener('click', () => {
     refs.modalWindow.classList.add('is-open');
-    setLargeImageSrc;
   });
+  function onGalleryClick(evt) {
+    const isModalWindowEl = evt.target.classList.contains('gallery__link');
+    if (!isModalWindowEl) {
+        return
+    }
+    
+    const openGalleryImgEl = evt.target;
+    const parentGalleryImg = openGalleryImgEl.closest('js-gallery')
+
+    parentGalleryImg.addEventListener('click', () => {
+    refs.modalWindow.classList.add('is-open');
+    });
+  };
 
   refs.closeBtnEl.addEventListener('click', () => {
    refs.modalWindow.classList.remove('is-open');
-    setLargeImageSrc;
     
     refs.largeModalImage.src = '';
     refs.largeModalImage.alt = '';
