@@ -97,6 +97,7 @@ const refs = {
   closeBtnEl :document.querySelector('[data-action="close-lightbox"]')
 };
 refs.gallery.addEventListener('click', onImageClick);
+
 function onImageClick(event) {
   event.preventDefault();
   console.log(event.target);
@@ -106,31 +107,31 @@ function onImageClick(event) {
   const imageRef = event.target;
   const largeImageURL = imageRef.dataset.source;
   setLargeImageSrc(largeImageURL);
+  refs.modalWindow.classList.add('is-open');
 }
 function setLargeImageSrc(url) {
   refs.largeModalImage.src = url;
 }
-  refs.gallery.addEventListener('click', () => {
-    refs.modalWindow.classList.add('is-open');
-  });
-  function onGalleryClick(evt) {
-    const isModalWindowEl = evt.target.classList.contains('gallery__link');
-    if (!isModalWindowEl) {
-        return
-    }
+  // refs.gallery.addEventListener('click', () => {
+  //   refs.modalWindow.classList.add('is-open');
+  // });
+  // function onGalleryClick(evt) {
+  //   const isModalWindowEl = evt.target.classList.contains('gallery__link');
+  //   if (!isModalWindowEl) {
+  //       return
+  //   }
     
-    const openGalleryImgEl = evt.target;
-    const parentGalleryImg = openGalleryImgEl.closest('js-gallery')
+  //   const openGalleryImgEl = evt.target;
+  //   const parentGalleryImg = openGalleryImgEl.closest('js-gallery')
 
-    parentGalleryImg.addEventListener('click', () => {
-    refs.modalWindow.classList.add('is-open');
-    });
-  };
+  //   parentGalleryImg.addEventListener('click', () => {
+  //   refs.modalWindow.classList.add('is-open');
+  //   });
+  // };
 
   refs.closeBtnEl.addEventListener('click', () => {
    refs.modalWindow.classList.remove('is-open');
     
     refs.largeModalImage.src = '';
-    refs.largeModalImage.alt = '';
   });
  
